@@ -1,0 +1,37 @@
+h1{
+	animation: background 1s infinite;
+}
+@keyframes background {
+    0%		{ background: #ff0000; }
+    8.3%	{ background: #ff8000; }
+    16.6%	{ background: #ffff00; }
+    25%		{ background: #80ff00; }
+    33.3%	{ background: #00ff00; }
+    41.6%	{ background: #00ff80; }
+    50%		{ background: #00ffff; }
+    58.3%	{ background: #80ffff; }
+    66.6%	{ background: #ffffff; }
+    75%		{ background: #ffff80; }
+    83.3%	{ background: #ffff00; }
+    91.6%	{ background: #ff8000; }
+    100%	{ background: #ff0000; }
+}
+
+@keyframes text {
+    0%		{ color: #ffff00; }
+    8.3%	{ color: #80ff00; }
+    16.6%	{ color: #00ff00; }
+    25%		{ color: #00ff80; }
+    33.3%	{ color: #00ffff; }
+    41.6%	{ color: #80ffff; }
+    50%		{ color: #ffffff; }
+    58.3%	{ color: #ffff80; }
+    66.6%	{ color: #ffff00; }
+    75%		{ color: #ff8000; }
+    83.3%	{ color: #ff0000; }
+    91.6%	{ color: #ff8000; }
+    100%	{ color: #ffff00; }
+}
+span{
+	animation: text 1s infinite;
+}
