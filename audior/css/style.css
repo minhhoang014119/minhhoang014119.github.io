@@ -84,3 +84,6 @@ body {
   padding: 5px;
 }
 /*# sourceMappingURL=style.css.map */
+.video-container, audio {
+	width: 100%;
+}
