@@ -55,7 +55,7 @@ load(['lib/Widget', 'model/file', 'model/video', 'model/subText', 'model/dialog'
                 case '+': subText.sync(1); this.alert_sync(); break;
                 case '-': subText.sync(-1); this.alert_sync(); break;
                 case 'Enter': this.alert_play_info(); break;
-                case ' ': video.toggle_play(); break;
+                case 'p': case ' ': video.toggle_play(); break;
                 case 'Escape': video.pause(); this.toggle_file_video(); break;
                 case '/': this.timeA = video.time(); this.alert_time_a(); break;
                 case '*': this.timeB = video.time(); this.alert_time_b(); break;
