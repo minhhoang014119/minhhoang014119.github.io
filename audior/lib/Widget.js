@@ -10,6 +10,7 @@ load(function(){
         flag_prop(prop, val){ return this.val_prop(prop, val == undefined ? !this.val_prop(prop) : val); }
         plus_prop(prop, val){ return this.val_prop(prop, val == undefined ? undefined : this.val_prop(prop) + val); }
         toggle_el(el, val){ (this[el] || el).toggle(val); return this; }
+        is_display(el){ return (this[el] || el).is(':visible'); }
     }
     return Widget;
 });

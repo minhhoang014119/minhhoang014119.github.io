@@ -34,8 +34,8 @@ load(['lib/Widget', 'model/file', 'model/video', 'model/subText', 'model/dialog'
         }
         play_init(){
             this.index = 0;
-            if(file.has_index(this.index, 'mp4')){
-                video.src(file.url(this.index, 'mp4'));
+            if(file.has_index(this.index, 'mp3')){
+                video.src(file.url(this.index, 'mp3'));
                 this.load_sub();
                 this.toggle_file_video();
                 this.alert_play_info();
@@ -47,10 +47,10 @@ load(['lib/Widget', 'model/file', 'model/video', 'model/subText', 'model/dialog'
                 case 'ArrowDown': video.rate(-0.1); video.save_rate(); this.alert_rate(); break;
                 case 'ArrowRight': video.seek(2); break;
                 case 'ArrowLeft': video.seek(-2); break;
-                case 'b': if(file.has_index(this.index - 1, 'mp4')){ video.src(file.url(--this.index, 'mp4')); this.load_sub(); } this.alert_play_info(); break;
-                case 'n': if(file.has_index(this.index + 1, 'mp4')){ video.src(file.url(++this.index, 'mp4')); this.load_sub(); } this.alert_play_info(); break;
+                case 'b': if(file.has_index(this.index - 1, 'mp3')){ video.src(file.url(--this.index, 'mp3')); this.load_sub(); } this.alert_play_info(); break;
+                case 'n': if(file.has_index(this.index + 1, 'mp3')){ video.src(file.url(++this.index, 'mp3')); this.load_sub(); } this.alert_play_info(); break;
                 case '0': case '1': case '2': case '3': case '4': case '5': case '6': case '7':
-                case '8': case '9': video.volume(key * 0.1); this.alert_volume(); break;
+                case '8': case '9': if (video.is_display()) { video.volume(key * 0.1); this.alert_volume(); } break;
                 case '.': video.volume(1); this.alert_volume(); break;
                 case '+': subText.sync(1); this.alert_sync(); break;
                 case '-': subText.sync(-1); this.alert_sync(); break;
@@ -80,7 +80,7 @@ load(['lib/Widget', 'model/file', 'model/video', 'model/subText', 'model/dialog'
         seek_to_subtitle_index(index){ video.time(subText.time(index)); }
         load_sub(){
             var self = this;
-            var sub = file.file_same_name(file.file(this.index, 'mp4').name, 'srt');
+            var sub = file.file_same_name(file.file(this.index, 'mp3').name, 'srt');
             if(sub)
                 funcUtils.read_file_as_string(sub, function(data){
                     subText.load(
@@ -95,7 +95,7 @@ load(['lib/Widget', 'model/file', 'model/video', 'model/subText', 'model/dialog'
             subText.toggle(!!sub);
         }
         toggle_file_video(){ file.toggle(); video.toggle(); }
-        alert_play_info(){ if(file.count('mp4')) dialog.alert(this.index + 1 + '/' + file.count('mp4') + ' - ' + file.name(this.index, 'mp4') + ' - Inore start: ' + video.ignore_start() + ' - Inore end: ' + video.ignore_end()); }
+        alert_play_info(){ if(file.count('mp3')) dialog.alert(this.index + 1 + '/' + file.count('mp3') + ' - ' + file.name(this.index, 'mp3') + ' - Inore start: ' + video.ignore_start() + ' - Inore end: ' + video.ignore_end()); }
         alert_rate(){ dialog.alert('rate: ' + Math.round(video.rate() * 10) / 10); }
         alert_volume(){ dialog.alert('volume: ' + video.volume()); }
         alert_sync(){ dialog.alert('sync: ' + Math.round(subText.sync() * 10) / 10); }

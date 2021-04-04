@@ -29,6 +29,7 @@ load('lib/Widget', function(Widget){
         duration = this.field_video.bind(this, 'duration');
         volume = this.field_video.bind(this, 'volume');
         toggle = this.toggle_el.bind(this, '$container');
+        is_display = this.is_display.bind(this, '$video');
     }
     return new Video();
 });
