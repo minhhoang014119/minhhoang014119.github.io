@@ -26,7 +26,7 @@ load(['lib/Widget', 'lib/SubTitle', 'lib/funcUtils'], function(Widget, SubTitle,
             _.each(this.subTitle.times, function(time, index){
                 var $item = $(temp({
                     time: funcUtils.second_to_string_time(time),
-                    text: $('<div/>').html(self.subTitle.texts[index].replace(/\r\n|\r|\n/g, '<br>'))/*.text()*/
+                    text: self.subTitle.texts[index].replace(/\r\n|\r|\n/g, '<br><br>') || $('<div/>').html(self.subTitle.texts[index].replace(/\r\n|\r|\n/g, '<br>')).text()
                 })).appendTo(self.$subText);
                 if(self.timeCallBack) $item.find('.sub-time').click(self.timeCallBack.bind(this, index));
                 if(self.textCallBack) $item.find('.sub-text').click(self.textCallBack.bind(this, index));
