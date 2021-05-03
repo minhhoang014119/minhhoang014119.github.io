@@ -77,7 +77,7 @@ load(['lib/Widget', 'model/file', 'model/video', 'model/subText', 'model/dialog'
                 video.time(this.timeA || 0);
             }
         }
-        seek_to_subtitle_index(index){ video.time(subText.time(index)); }
+        seek_to_subtitle_index(index){ video.time(subText.time(index) + subText.subTitle.syncVal); }
         load_sub(){
             var self = this;
             var sub = file.file_same_name(file.file(this.index, 'mp3').name, 'srt');
