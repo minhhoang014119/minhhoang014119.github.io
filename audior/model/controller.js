@@ -35,7 +35,6 @@ load(['../lib/Widget', '../videor/model/file', '../videor/model/video', 'model/s
 			subText.toggle(false);
 			this.$window = $(window);
 			this.index = (localStorage.getItem('index') || 0) * 1;
-			console.log(this.index);
 			this.timeA = null;
 			this.timeB = null;
 		}
@@ -45,8 +44,8 @@ load(['../lib/Widget', '../videor/model/file', '../videor/model/video', 'model/s
 			this.play();
 		}
 		play(){
-			if(file.has_index(this.index, 'mp4')){
-				video.src(file.url(this.index, 'mp4'));
+			if(file.has_index(this.index, this.get_file_extention())){
+				video.src(file.url(this.index, this.get_file_extention()));
 				this.load_sub();
 				this.toggle_file_video();
 				this.alert_play_info();
