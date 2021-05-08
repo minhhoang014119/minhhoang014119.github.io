@@ -1,13 +1,13 @@
-load(['lib/Widget', 'lib/funcUtils'], function(Widget, funcUtils){
-    class Dialog extends Widget {
-        alert(msg){
-            $('<h3/>').addClass('alert').html(msg).appendTo(document.body).click(function(){
-                funcUtils.copy_to_clipboard(msg);
-                $(this).html(msg + ' - Copied!');
-            }).delay(2000).queue(function(){
-                $(this).remove().dequeue();
-            });
-        }
-    }
-    return new Dialog();
+load(['../lib/Widget', '../lib/funcUtils'], function(Widget, funcUtils){
+	class Dialog extends Widget {
+		alert(msg){
+			$('<h3/>').addClass('alert').html(msg).appendTo(document.body).click(function(){
+				funcUtils.copy_to_clipboard(msg);
+				$(this).html(msg + ' - Copied!');
+			}).delay(2000).queue(function(){
+				$(this).remove().dequeue();
+			});
+		}
+	}
+	return new Dialog();
 });

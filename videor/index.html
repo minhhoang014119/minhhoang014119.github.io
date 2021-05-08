@@ -1,7 +1,8 @@
 <link rel="stylesheet" href="css/style.css">
 
 <div class="file-container">
-	<input class="file" type="file" multiple/><br/>
+	<input class="file" type="file" accept=".mp4, .srt" multiple/><br/>
+	<button class="button">Play</button><br/>
 	Inore start: <input class="ignore-start" type="number" value="0"/><br/>
 	Inore end: <input class="ignore-end" type="number" value="0"/>
 </div>
@@ -12,5 +13,5 @@
     <div class="subText" style="display: none;"></div>
 </div>
 
-<script src="lib/load.js"></script>
+<script src="../lib/load.js"></script>
 <script src="main.js"></script>
