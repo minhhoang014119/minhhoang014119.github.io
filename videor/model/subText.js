@@ -1,5 +1,5 @@
 load(['../lib/Widget', '../lib/SubTitle', '../lib/funcUtils'], function(Widget, SubTitle, funcUtils){
-	class SubText extends Widget {
+	return class SubText extends Widget {
 		init(){
 			this.$container = $('.container');
 			this.$subText = $('.subText');
@@ -48,5 +48,4 @@ load(['../lib/Widget', '../lib/SubTitle', '../lib/funcUtils'], function(Widget, 
 			this.$subText.stop().animate({ scrollTop: top - this.$subText.height() / 2 + this.$active.outerHeight() / 2 });
 		}
 	}
-	return new SubText();
 });

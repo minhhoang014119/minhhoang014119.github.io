@@ -1,5 +1,5 @@
 load(['../lib/Widget', '../lib/funcUtils'], function(Widget, funcUtils){
-	class Dialog extends Widget {
+	return class Dialog extends Widget {
 		alert(msg){
 			$('<h3/>').addClass('alert').html(msg).appendTo(document.body).click(function(){
 				funcUtils.copy_to_clipboard(msg);
@@ -9,5 +9,4 @@ load(['../lib/Widget', '../lib/funcUtils'], function(Widget, funcUtils){
 			});
 		}
 	}
-	return new Dialog();
 });

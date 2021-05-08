@@ -1,5 +1,5 @@
 load('../lib/Widget', function(Widget){
-	class Video extends Widget {
+	return class Video extends Widget {
 		plus_video = this.plus_field.bind(this, this.$video[0]);
 		field_video = this.val_field.bind(this, this.$video[0]);
 		events(){
@@ -31,5 +31,4 @@ load('../lib/Widget', function(Widget){
 		toggle = this.toggle_el.bind(this, '$container');
 		is_display = this.is_display.bind(this, '$video');
 	}
-	return new Video();
 });

@@ -1,6 +1,11 @@
 load(['../lib/Widget', 'model/file', 'model/video', 'model/subText', 'model/dialog', '../lib/funcUtils'],
-		function(Widget, file, video, subText, dialog, funcUtils){
-	class Controller extends Widget {
+		function(Widget, File, Video, SubText, Dialog, funcUtils){
+	var file = new File();
+	var video = new Video();
+	var dialog = new Dialog();
+	var subText = new SubText();
+	
+	return class Controller extends Widget {
 		events(){
 			file.$file.change(this.on_file_change.bind(this));
 			$('.button').click(this.play.bind(this));
@@ -109,5 +114,4 @@ load(['../lib/Widget', 'model/file', 'model/video', 'model/subText', 'model/dial
 		alert_time_b(){ dialog.alert('time b: ' + funcUtils.second_to_string_time(this.timeB)); }
 		alert_clear_ab(){ dialog.alert('clear time ab'); }
 	}
-	return new Controller();
 });
