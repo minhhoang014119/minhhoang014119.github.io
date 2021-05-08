@@ -4,7 +4,7 @@ load(['../lib/Widget', 'model/file', 'model/video', 'model/subText', 'model/dial
 	var video = new Video();
 	var dialog = new Dialog();
 	var subText = new SubText();
-	
+
 	return class Controller extends Widget {
 		events(){
 			file.$file.change(this.on_file_change.bind(this));
@@ -58,8 +58,8 @@ load(['../lib/Widget', 'model/file', 'model/video', 'model/subText', 'model/dial
 				case 'ArrowDown': video.rate(-0.1); video.save_rate(); this.alert_rate(); break;
 				case 'ArrowRight': video.seek(2); break;
 				case 'ArrowLeft': video.seek(-2); break;
-				case 'b': if(file.has_index(this.index - 1, 'mp4')){ video.src(file.url(--this.index, 'mp4')); localStorage.setItem('index', this.index); this.load_sub(); } this.alert_play_info(); break;
-				case 'n': if(file.has_index(this.index + 1, 'mp4')){ video.src(file.url(++this.index, 'mp4')); localStorage.setItem('index', this.index); this.load_sub(); } this.alert_play_info(); break;
+				case 'b': if(file.has_index(this.index - 1, this.get_file_extention())){ video.src(file.url(--this.index, 'mp4')); localStorage.setItem('index', this.index); this.load_sub(); } this.alert_play_info(); break;
+				case 'n': if(file.has_index(this.index + 1, this.get_file_extention())){ video.src(file.url(++this.index, 'mp4')); localStorage.setItem('index', this.index); this.load_sub(); } this.alert_play_info(); break;
 				case '0': case '1': case '2': case '3': case '4': case '5': case '6': case '7':
 				case '8': case '9': if (video.is_display()) { video.volume(key * 0.1); this.alert_volume(); } break;
 				case '.': video.volume(1); this.alert_volume(); break;
@@ -75,6 +75,7 @@ load(['../lib/Widget', 'model/file', 'model/video', 'model/subText', 'model/dial
 					else if (this.timeB != null) video.time(this.timeB); break;
 			}
 		}
+		get_file_extention(){ return 'mp4'; }
 		update_subtitle(time){ 
 			if(this.hasSub){
 				var item = subText.subTitle.get(time);
@@ -91,7 +92,7 @@ load(['../lib/Widget', 'model/file', 'model/video', 'model/subText', 'model/dial
 		seek_to_subtitle_index(index){ video.time(subText.time(index) + subText.subTitle.syncVal); }
 		load_sub(){
 			var self = this;
-			var sub = file.file_same_name(file.file(this.index, 'mp4').name, 'srt');
+			var sub = file.file_same_name(file.file(this.index, this.get_file_extention()).name, 'srt');
 			if(sub)
 				funcUtils.read_file_as_string(sub, function(data){
 					subText.load(
@@ -106,7 +107,7 @@ load(['../lib/Widget', 'model/file', 'model/video', 'model/subText', 'model/dial
 			subText.toggle(!!sub);
 		}
 		toggle_file_video(){ file.toggle(); video.toggle(); }
-		alert_play_info(){ if(file.count('mp4')) dialog.alert(this.index + 1 + '/' + file.count('mp4') + ' - ' + file.name(this.index, 'mp4') + ' - Inore start: ' + video.ignore_start() + ' - Inore end: ' + video.ignore_end()); }
+		alert_play_info(){ if(file.count(this.get_file_extention())) dialog.alert(this.index + 1 + '/' + file.count(this.get_file_extention()) + ' - ' + file.name(this.index, this.get_file_extention()) + ' - Inore start: ' + video.ignore_start() + ' - Inore end: ' + video.ignore_end()); }
 		alert_rate(){ dialog.alert('rate: ' + Math.round(video.rate() * 10) / 10); }
 		alert_volume(){ dialog.alert('volume: ' + video.volume()); }
 		alert_sync(){ dialog.alert('sync: ' + Math.round(subText.sync() * 10) / 10); }

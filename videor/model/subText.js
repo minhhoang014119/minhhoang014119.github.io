@@ -26,12 +26,13 @@ load(['../lib/Widget', '../lib/SubTitle', '../lib/funcUtils'], function(Widget, 
 			_.each(this.subTitle.times, function(time, index){
 				var $item = $(temp({
 					time: funcUtils.second_to_string_time(time),
-					text: $('<div/>').html(self.subTitle.texts[index].replace(/\r\n|\r|\n/g, '<br>')).text()
+					text: self.getText(index)
 				})).appendTo(self.$subText);
 				if(self.timeCallBack) $item.find('.sub-time').click(self.timeCallBack.bind(this, index));
 				if(self.textCallBack) $item.find('.sub-text').click(self.textCallBack.bind(this, index));
 			});
 		}
+		getText(index){ return $('<div/>').html(this.subTitle.texts[index].replace(/\r\n|\r|\n/g, '<br>')).text(); }
 		time(index){ return this.subTitle.times[index]; }
 		text(index){ return this.subTitle.texts[index]; }
 		sync = this.plus_field.bind(this, this.subTitle, 'syncVal');
