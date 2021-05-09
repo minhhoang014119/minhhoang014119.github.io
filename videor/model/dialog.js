@@ -1,4 +1,4 @@
-load(['../lib/Widget', '../lib/funcUtils'], function(Widget, funcUtils){
+load(['../../lib/Widget', '../../lib/funcUtils'], function(Widget, funcUtils){
 	return class Dialog extends Widget {
 		alert(msg){
 			$('<h3/>').addClass('alert').html(msg).appendTo(document.body).click(function(){

@@ -1,4 +1,4 @@
-load(['../lib/Widget', 'model/file', 'model/video', 'model/subText', 'model/dialog', '../lib/funcUtils'],
+load(['../../lib/Widget', 'file', 'video', 'subText', 'dialog', '../../lib/funcUtils'],
 		function(Widget, File, Video, SubText, Dialog, funcUtils){
 	var file = new File();
 	var video = new Video();
@@ -45,8 +45,8 @@ load(['../lib/Widget', 'model/file', 'model/video', 'model/subText', 'model/dial
 			this.play();
 		}
 		play(){
-			if(file.has_index(this.index, 'mp4')){
-				video.src(file.url(this.index, 'mp4'));
+			if(file.has_index(this.index, this.get_file_extention())){
+				video.src(file.url(this.index, this.get_file_extention()));
 				this.load_sub();
 				this.toggle_file_video();
 				this.alert_play_info();

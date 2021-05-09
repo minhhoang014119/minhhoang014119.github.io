@@ -1,4 +1,4 @@
-load(['../lib/Widget', '../lib/SubTitle', '../lib/funcUtils'], function(Widget, SubTitle, funcUtils){
+load(['../../lib/Widget', '../../lib/SubTitle', '../../lib/funcUtils'], function(Widget, SubTitle, funcUtils){
 	return class SubText extends Widget {
 		init(){
 			this.$container = $('.container');
