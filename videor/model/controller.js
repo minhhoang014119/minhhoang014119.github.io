@@ -23,6 +23,7 @@ load(['../../lib/Widget', 'file', 'video', 'subText', 'dialog', '../../lib/funcU
 		}
 		on_time_update(){
 			var time = video.time();
+			localStorage.setItem('time', time);
 			this.update_subtitle(time);
 			this.check_loop_ab(time);
 		}
@@ -43,11 +44,13 @@ load(['../../lib/Widget', 'file', 'video', 'subText', 'dialog', '../../lib/funcU
 		play_init(){
 			this.index = 0;
 			localStorage.setItem('index', this.index);
+			localStorage.setItem('time', 0);
 			this.play();
 		}
 		play(){
 			if(file.has_index(this.index, this.get_file_extention())){
 				video.src(file.url(this.index, this.get_file_extention()));
+				video.time((localStorage.getItem('time') || 0) * 1);
 				this.load_sub();
 				this.toggle_file_video();
 				this.alert_play_info();
@@ -59,8 +62,8 @@ load(['../../lib/Widget', 'file', 'video', 'subText', 'dialog', '../../lib/funcU
 				case 'ArrowDown': video.rate(-0.1); video.save_rate(); this.alert_rate(); break;
 				case 'ArrowRight': video.seek(2); break;
 				case 'ArrowLeft': video.seek(-2); break;
-				case 'b': if(file.has_index(this.index - 1, this.get_file_extention())){ video.src(file.url(--this.index, 'mp4')); localStorage.setItem('index', this.index); this.load_sub(); } this.alert_play_info(); break;
-				case 'n': if(file.has_index(this.index + 1, this.get_file_extention())){ video.src(file.url(++this.index, 'mp4')); localStorage.setItem('index', this.index); this.load_sub(); } this.alert_play_info(); break;
+				case 'b': if(file.has_index(this.index - 1, this.get_file_extention())){ video.src(file.url(--this.index, this.get_file_extention())); localStorage.setItem('index', this.index); this.load_sub(); } this.alert_play_info(); break;
+				case 'n': if(file.has_index(this.index + 1, this.get_file_extention())){ video.src(file.url(++this.index, this.get_file_extention())); localStorage.setItem('index', this.index); this.load_sub(); } this.alert_play_info(); break;
 				case '0': case '1': case '2': case '3': case '4': case '5': case '6': case '7':
 				case '8': case '9': if (video.is_display()) { video.volume(key * 0.1); this.alert_volume(); } break;
 				case '.': video.volume(1); this.alert_volume(); break;
