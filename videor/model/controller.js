@@ -35,6 +35,7 @@ load(['../../lib/Widget', 'file', 'video', 'subText', 'dialog', '../../lib/funcU
 			subText.toggle(false);
 			this.$window = $(window);
 			this.index = (localStorage.getItem('index') || 0) * 1;
+			subText.subTitle.syncVal = (localStorage.getItem('syncVal') || 0) * 1;
 			console.log(this.index);
 			this.timeA = null;
 			this.timeB = null;
@@ -63,8 +64,8 @@ load(['../../lib/Widget', 'file', 'video', 'subText', 'dialog', '../../lib/funcU
 				case '0': case '1': case '2': case '3': case '4': case '5': case '6': case '7':
 				case '8': case '9': if (video.is_display()) { video.volume(key * 0.1); this.alert_volume(); } break;
 				case '.': video.volume(1); this.alert_volume(); break;
-				case '+': subText.sync(1); this.alert_sync(); break;
-				case '-': subText.sync(-1); this.alert_sync(); break;
+				case '+': subText.sync(1); localStorage.setItem('syncVal', subText.sync()); this.alert_sync(); break;
+				case '-': subText.sync(-1); localStorage.setItem('syncVal', subText.sync()); this.alert_sync(); break;
 				case 'Enter': this.alert_play_info(); break;
 				case 'p': case ' ': video.toggle_play(); break;
 				case 'Escape': video.pause(); this.toggle_file_video(); break;
