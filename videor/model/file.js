@@ -1,4 +1,4 @@
-load('../lib/Widget', function(Widget){
+load(['../lib/Widget'], function(Widget){
 	return class File extends Widget {
 		init(){
 			this.$fileContainer = $('.file-container');
