@@ -37,7 +37,6 @@ load(['../../lib/Widget', 'file', 'video', 'subText', 'dialog', '../../lib/funcU
 			this.$window = $(window);
 			this.index = (localStorage.getItem('index') || 0) * 1;
 			subText.subTitle.syncVal = (localStorage.getItem('syncVal') || 0) * 1;
-			console.log(this.index);
 			this.timeA = null;
 			this.timeB = null;
 		}
