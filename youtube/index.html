@@ -1,0 +1,26 @@
+<html><head><style>
+body{margin:0}
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript">
+    function inputUrl() {
+        var url = $('#url').val();
+        var url = url.replace("/watch?v=", "/embed/");
+        var src = url + '?&amp;loop=1&amp;rel=0&amp;modestbranding=1&amp;showinfo=0&amp;controls=1&amp;iv_load_policy=3&amp;autoplay=1&amp;enablejsapi=1&amp;origin=no_ad.com';
+        $('#play').attr('src', url);
+    };
+</script>
+</head>
+    <body>
+        <table width="50%">
+            <tr>
+                <td width="20%" style="text-align: left;">&nbsp;</td>
+                <td width="20%" style="text-align: left;">&nbsp;</td>
+                <td width="5%" style="text-align: left;">URL</td>
+                <td width="50%" style="text-align: left;"><input type="text" name="" id='url' placeholder="Input YouTube link" width="100%" size="100" value="" /></td>
+                <td width="5%"  style="text-align: left;"><input type="button" name="OK" value="Ok" id='btnOk' onClick="inputUrl();" /></td>
+            </tr>
+        </table>
+        <iframe width="90%" style="height:90%; clear:both; margin:0px; padding:0px;" src="" seamless="" frameborder="0" allowfullscreen="" id="play"></iframe>
+    </body>
+ </html>
