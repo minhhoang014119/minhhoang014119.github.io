@@ -80,7 +80,11 @@
 <script>
 var $ = document.querySelector.bind(document);
 function showIframe(){
-	$("#iframe").src = "data:text/html;charset=utf-8," + escape(html.getValue() + "<script>" + js.getValue() + "</" + "script>");
+	var htmlVal = html.getValue();
+	var jsVal = js.getValue();
+	document.cookie.htmlVal = htmlVal;
+	document.cookie.jsVal = jsVal;
+	$("#iframe").src = "data:text/html;charset=utf-8," + escape(htmlVal + "<script>" + jsVal + "</" + "script>");
 }
 
 require.config({
@@ -88,7 +92,7 @@ require.config({
 });
 require(["vs/editor/editor.main"], function () {
 	window.html = monaco.editor.create($("#html"), {
-		model: monaco.editor.createModel("", "html"),
+		model: monaco.editor.createModel(document.cookie.htmlVal, "html"),
 		theme: "vs-dark",
 		automaticLayout: true
 	});
@@ -96,7 +100,7 @@ require(["vs/editor/editor.main"], function () {
 		showIframe();
 	});
 	window.js = monaco.editor.create($("#js"), {
-		model: monaco.editor.createModel("", "javascript"),
+		model: monaco.editor.createModel(document.cookie.jsVal, "javascript"),
 		theme: "vs-dark",
 		automaticLayout: true
 	});
