@@ -1,0 +1,33 @@
+<style>
+.skiptranslate {
+	display: flex;
+}
+
+#google_translate_element {
+	display: inline-block;
+}
+</style>
+
+<style id="text-white">
+.text-white {
+	color: white !important;
+}
+</style>
+
+<div id="google_translate_element"></div>
+
+<div id="content" class="text-white"></div>
+
+<script type="text/javascript">
+	const params = new URLSearchParams(window.location.search.replace("?", ""))
+	function googleTranslateElementInit() {
+		window.translateElement = new google.translate.TranslateElement({
+			pageLanguage : params.get("from") || 'en',
+			translatePage : params.get("to") || 'vi',
+		//        layout : google.translate.TranslateElement.InlineLayout.SIMPLE
+		}, 'google_translate_element');
+	}
+</script>
+
+<script type="text/javascript"
+	src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>

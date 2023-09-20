@@ -1,0 +1,54 @@
+*{
+	margin: 0;
+}
+.container{
+	background: #282726;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+}
+.list{
+	flex: 1;
+	overflow: auto;
+}
+.buttons, .item{
+	background: #504B37;
+	color: white;
+	border-radius: 10px;
+	overflow: auto;
+	margin: 5px;
+}
+.item{
+	margin-top: 0px;
+}
+.item + .item{
+	margin-top: 5px;
+}
+.number, .kanji, .mean, .kun, .on, .detail{
+	color: white;
+	min-height: 25px;
+	border-radius: 10px;
+	float: left;
+	padding: 2px 7px;
+	margin-right: 5px;
+	display: flex;
+	align-items: center;
+}
+.number{
+	background: #816F99;
+}
+.kanji{
+	background: #6a8a82;
+}
+.mean{
+	background: #a37c27;
+}
+.kun{
+	background: #BC7742;
+}
+.on{
+	background: #a7414a;
+}
+.detail{
+	background: #7C625E;
+}
