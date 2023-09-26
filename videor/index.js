@@ -1,7 +1,7 @@
 const root = location.href.replaceAll('index.html', '').replace(/\/$/, '')
 define('lib', {
   load: (name, req, onLoad) => {
-    require([root + '/lib/' + name + '.js'], onLoad)
+    require([root + '/../lib/' + name + '.js'], onLoad)
   }
 })
 define('model', {
