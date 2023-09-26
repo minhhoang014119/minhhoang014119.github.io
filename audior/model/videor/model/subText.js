@@ -1,4 +1,4 @@
-define(['./lib/Widget', './lib/SubTitle', './lib/funcUtils'], (Widget, SubTitle, funcUtils) => {
+define(['lib!Widget', 'lib!SubTitle', 'lib!funcUtils'], (Widget, SubTitle, funcUtils) => {
   return class SubText extends Widget {
     init() {
       this.$container = $('.container');

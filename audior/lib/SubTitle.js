@@ -1,4 +1,4 @@
-define(['./Class'], Class => {
+define(['lib!Class'], Class => {
   return Class.extend({
     syncVal: 0,
     index: 0,

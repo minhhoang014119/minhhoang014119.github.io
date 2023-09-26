@@ -1,4 +1,4 @@
-define(['./lib/Widget', './lib/funcUtils'], (Widget, funcUtils) => {
+define(['lib!Widget', 'lib!funcUtils'], (Widget, funcUtils) => {
   return class Dialog extends Widget {
     alert(msg) {
       $('<h3/>').addClass('alert').html(msg).appendTo(document.body).click(function() {

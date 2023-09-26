@@ -1,4 +1,4 @@
-define(['./lib/Widget'], Widget => {
+define(['lib!Widget'], Widget => {
   return class File extends Widget {
     init() {
       this.$fileContainer = $('.file-container');

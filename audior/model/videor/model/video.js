@@ -1,4 +1,4 @@
-define(['./lib/Widget'], Widget => {
+define(['lib!Widget'], Widget => {
   return class Video extends Widget {
     plus_video = this.plus_field.bind(this, this.$video[0]);
     field_video = this.val_field.bind(this, this.$video[0]);
