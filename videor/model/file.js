@@ -1,4 +1,4 @@
-load(['../../lib/Widget'], function(Widget) {
+define(['lib!Widget'], Widget => {
   return class File extends Widget {
     init() {
       this.$fileContainer = $('.file-container');
@@ -24,4 +24,4 @@ load(['../../lib/Widget'], function(Widget) {
     is_show() { return this.$file.is(':visible'); }
     toggle = this.toggle_el.bind(this, '$fileContainer');
   }
-});
+})

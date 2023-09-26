@@ -1,5 +1,5 @@
-load(['../../lib/Widget', 'file', 'video', 'subText', 'dialog', '../../lib/funcUtils'],
-  function(Widget, File, Video, SubText, Dialog, funcUtils) {
+define(['lib!Widget', 'model!file', 'model!video', 'model!subText', 'model!dialog', 'lib!funcUtils'],
+  (Widget, File, Video, SubText, Dialog, funcUtils) => {
     var file = new File();
     var video = new Video();
     var dialog = new Dialog();
@@ -125,4 +125,4 @@ load(['../../lib/Widget', 'file', 'video', 'subText', 'dialog', '../../lib/funcU
       alert_time_b() { dialog.alert('time b: ' + funcUtils.second_to_string_time(this.timeB)); }
       alert_clear_ab() { dialog.alert('clear time ab'); }
     }
-  });
+  })
