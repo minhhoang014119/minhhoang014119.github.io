@@ -1,4 +1,4 @@
-define(['lib!Widget', 'model!videor/model/file', 'model!videor/model/video', 'model!videor/model/subText', 'model!videor/model/dialog', 'lib!funcUtils'],
+define(['lib!Widget', './file', './video', './subText', './dialog', 'lib!funcUtils'],
   (Widget, File, Video, SubText, Dialog, funcUtils) => {
     var file = new File();
     var video = new Video();
