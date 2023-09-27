@@ -7,7 +7,6 @@ define('lib', {
 require(['lib!css', 'lib!jquery.min', 'lib!underscore-min', './model/controller'], (css, jquery, underscore, Controller) => (async () => {
   require(['css!../videor/css/style.css', 'css!./css/style.css'], () => document.body.style.display = '')
   await new Promise((res, interval) => (interval = setInterval(() => window.$ && window._ && res(clearInterval(interval)), 100)))
-  const audior = new Controller()
-  window.getAudior && window.getAudior(audior)
+  window.getAudior && window.getAudior(new Controller())
   console.log('audior ready')
 })())
