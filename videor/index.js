@@ -6,6 +6,7 @@ define('lib', {
 })
 require(['lib!jquery.min', 'lib!underscore-min', './model/controller'], (a, b, Controller) => (async () => {
   await new Promise((res, interval) => (interval = setInterval(() => window.$ && window._ && res(clearInterval(interval)), 100)))
-  window.getAudior && window.getAudior(new Controller())
+  const videor = new Controller()
+  window.getAudior && window.getAudior(videor)
   console.log('videor ready')
 })())
