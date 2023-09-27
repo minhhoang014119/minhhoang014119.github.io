@@ -4,7 +4,8 @@ define('lib', {
     require([root + '/../lib/' + name + '.js'], onLoad)
   }
 })
-require(['lib!jquery.min', 'lib!underscore-min', './model/controller'], (a, b, Controller) => (async () => {
+require(['lib!css', 'lib!jquery.min', 'lib!underscore-min', './model/controller'], (css, jquery, underscore, Controller) => (async () => {
+  require(['css!../../videor/css/style.css'])
   await new Promise((res, interval) => (interval = setInterval(() => window.$ && window._ && res(clearInterval(interval)), 100)))
   const audior = new Controller()
   window.getAudior && window.getAudior(audior)
