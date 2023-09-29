@@ -82,6 +82,7 @@ body {
   class="spinner-border text-secondary sticky-top position-fixed end-0 mt-5 me-4"></div>
 <script>
   (async () => {
+	  if (new URLSearchParams(window.location.search.replace("?", "")).has('popup')) return
 	  window.onbeforeunload = function (e) {
 		    e = e || window.event;
 
