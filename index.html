@@ -81,22 +81,20 @@ body {
 <div
   class="spinner-border text-secondary sticky-top position-fixed end-0 mt-5 me-4"></div>
 <script>
-window.onbeforeunload = function (e) {
-    e = e || window.event;
-
-    // For IE and Firefox prior to version 4
-    if (e) {
-        e.returnValue = 'Sure?';
-    }
-
-    // For Safari
-    return 'Sure?';
-};
-</script>
-<script>
-  window.parentRequire = window.require;
-  window.require = undefined;
   (async () => {
+	  window.onbeforeunload = function (e) {
+		    e = e || window.event;
+
+		    // For IE and Firefox prior to version 4
+		    if (e) {
+		        e.returnValue = 'Sure?';
+		    }
+
+		    // For Safari
+		    return 'Sure?';
+		};
+	  window.parentRequire = window.require;
+	  window.require = undefined;
     const text = async (name, url) => !/[\?&]no-cache/.test(window.location.search) && localStorage.getItem(name)
       ? localStorage.getItem(name)
       : fetch(url || name, { cache: "no-cache" }).then(rs => rs.text())
