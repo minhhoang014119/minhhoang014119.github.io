@@ -17,6 +17,8 @@ define(['https://cdnjs.cloudflare.com/ajax/libs/wavesurfer.js/7.3.3/wavesurfer.m
         container: $('.video-container')[0],
         dragToSeek: true,
         mediaControls: true,
+        waveColor: 'rgb(65 142 255)',
+        progressColor: 'rgb(13, 110, 253)',
       })
       this.$container = $('.container');
       this.$video = $(this.wave.media);
