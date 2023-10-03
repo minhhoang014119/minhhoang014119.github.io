@@ -1,4 +1,5 @@
-define(['lib!Widget'], Widget => {
+define(['https://cdnjs.cloudflare.com/ajax/libs/wavesurfer.js/7.3.3/wavesurfer.min.js', 'lib!Widget'], (wavesurfer, Widget) => {
+
   return class Video extends Widget {
     plus_video = this.plus_field.bind(this, this.$video[0]);
     field_video = this.val_field.bind(this, this.$video[0]);
@@ -12,8 +13,13 @@ define(['lib!Widget'], Widget => {
     }
     on_time_update() { if (this.time() >= this.duration() - this.ignore_end()) this.stop(); }
     init() {
+      this.wave = wavesurfer.create({
+        container: $('.video-container')[0],
+        dragToSeek: true,
+        mediaControls: true,
+      })
       this.$container = $('.container');
-      this.$video = $('.video');
+      this.$video = $(this.wave.media);
       this.$ignoreStart = $('.ignore-start');
       this.$ignoreEnd = $('.ignore-end');
       this.rateValue = 1;

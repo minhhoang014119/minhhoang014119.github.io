@@ -6,6 +6,7 @@ define(['lib!Widget', './file', './video', './subText', './dialog', 'lib!funcUti
     var subText = new SubText();
 
     return class Controller extends Widget {
+      get_video() { return video }
       is_video_display() { return video.is_display() }
       events() {
         file.$file.change(this.on_file_change.bind(this));
