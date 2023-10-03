@@ -28,7 +28,7 @@ define(['https://cdnjs.cloudflare.com/ajax/libs/wavesurfer.js/7.3.3/wavesurfer.m
     play() { this.$video[0].play(); return this; }
     pause() { this.$video[0].pause(); return this; }
     stop() { return this.time(this.duration()); }
-    src(value) { this.$video[0].src = value; this.time(this.ignore_start()); return this.play(); }
+    src(value) { this.wave.load(value); this.time(this.ignore_start()); return this.play(); }
     rate(value) {
       const rate = this.plus_video('playbackRate', value);
       window.on_rate_video && window.on_rate_video(rate)
