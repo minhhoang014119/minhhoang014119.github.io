@@ -4,9 +4,11 @@ define('lib', {
     require([root + '/../lib/' + name + '.js'], mod => define(name, mod) || onLoad(mod))
   }
 })
-require(['lib!jquery.min', 'lib!underscore-min', './model/controller'], (jquery, underscore, Controller) => (async () => {
+require(['lib!jquery.min', 'lib!underscore-min'], () => (async () => {
   await new Promise((res, interval) => (interval = setInterval(() => window.$ && window._ && res(clearInterval(interval)), 100)))
-  const audior = new Controller()
-  window.getAudior && window.getAudior(audior)
-  console.log('audior ready')
+  require(['./model/controller'], Controller => {
+    const audior = new Controller()
+    window.getAudior && window.getAudior(audior)
+    console.log('audior ready')
+  })
 })())
