@@ -49,17 +49,23 @@ define(['lib!Widget', './file', './video', './subText', './dialog', 'lib!funcUti
         localStorage.setItem('time', 0);
         this.play();
       }
-      play(keep) {
+      load(keep) {
         if (file.has_index(this.index, this.get_file_extention())) {
-          video.src(file.url(this.index, this.get_file_extention()));
+          video.src(file.url(this.index, this.get_file_extention()), true);
           video.time((localStorage.getItem('time') || 0) * 1);
           this.load_sub();
           !keep && this.toggle_file_video();
           this.alert_play_info();
         }
       }
-      toggle_play() {
-        video.toggle_play();
+      play() {
+        if (file.has_index(this.index, this.get_file_extention())) {
+          video.src(file.url(this.index, this.get_file_extention()));
+          video.time((localStorage.getItem('time') || 0) * 1);
+          this.load_sub();
+          this.toggle_file_video();
+          this.alert_play_info();
+        }
       }
       check_key_down(key) {
         switch (key) {
