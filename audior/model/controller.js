@@ -87,8 +87,7 @@ define(['lib!Widget', './file', './video', './subText', './dialog', 'lib!funcUti
           case '/': case 'q': this.timeA = video.time(); window.on_loop_video && window.on_loop_video(); this.alert_time_a(); break;
           case '*': case 'e': this.timeB = video.time(); window.on_loop_video && window.on_loop_video(); this.alert_time_b(); break;
           case 'Delete': case 'r': this.timeA = this.timeB = this.count = null; window.on_loop_video && window.on_loop_video(); this.alert_clear_ab(); break;
-          case 'Insert': if (this.timeA != null && video.time() != this.timeA) video.time(this.timeA);
-          else if (this.timeB != null) video.time(this.timeB); break;
+          case 'Insert': if (this.timeA != null && video.time() != this.timeA) video.time(this.timeA); else if (this.timeB != null) video.time(this.timeB); break;
         }
       }
       get_file_extention() { return 'mp3'; }
