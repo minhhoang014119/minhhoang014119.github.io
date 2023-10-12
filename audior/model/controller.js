@@ -67,6 +67,7 @@ define(['lib!Widget', './file', './video', './subText', './dialog', 'lib!funcUti
           this.alert_play_info();
         }
       }
+
       check_key_down(key) {
         switch (key) {
           case 'ArrowUp': video.rate(0.1); video.save_rate(); this.alert_rate(); break;
