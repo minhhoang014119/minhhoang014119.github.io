@@ -85,6 +85,7 @@ define(['lib!Widget', './file', './video', './subText', './dialog', 'lib!funcUti
           case 'Enter': this.alert_play_info(); break;
           case 'p': case ' ': case 'x': video.toggle_play(); break;
           case 'Escape': video.pause(); this.toggle_file_video(); break;
+          case 'f': video.time(0); break;
           case '/': this.timeA && video.time(this.timeA); break;
           case 'q': this.timeA = video.time(); window.on_loop_video && window.on_loop_video(); this.alert_time_a(); break;
           case '*': this.timeB = null; break;
