@@ -3550,7 +3550,7 @@ function webViewerInitialized() {
       PDFViewerApplication._documentError(msg, reason);
     });
   }
-  window.initPdf && window.initPdf(PDFViewerApplication);
+  window.onInitPdf && window.onInitPdf(PDFViewerApplication);
 }
 
 function webViewerPageRendered({
