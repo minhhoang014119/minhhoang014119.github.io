@@ -2572,7 +2572,7 @@ const PDFViewerApplication = {
           setTimeout(resolve, FORCE_PAGES_LOADED_TIMEOUT);
         })]);
 
-        window.onLoadPdf && window.onLoadPdf();
+        window.onLoadPdf && window.onLoadPdf(this);
 
         if (!initialBookmark && !hash) {
           return;
@@ -3815,7 +3815,7 @@ function webViewerPageNumberChanged(evt) {
 
 function webViewerScaleChanged(evt) {
   PDFViewerApplication.pdfViewer.currentScaleValue = evt.value;
-  window.onWebViewerScaleChanged && window.onWebViewerScaleChanged();
+  window.onWebViewerScaleChanged && window.onWebViewerScaleChanged(evt.value);
 }
 
 function webViewerRotateCw() {
