@@ -20,6 +20,7 @@ define(['https://cdnjs.cloudflare.com/ajax/libs/wavesurfer.js/7.3.3/wavesurfer.m
         waveColor: 'rgb(65 142 255)',
         progressColor: 'rgb(13, 110, 253)',
       })
+      this.wave.on('ready', () => window.on_wave_ready && window.on_wave_ready());
       this.$container = $('.container');
       this.$video = $(this.wave.media);
       this.$ignoreStart = $('.ignore-start');
