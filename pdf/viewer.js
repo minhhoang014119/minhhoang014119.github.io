@@ -3791,14 +3791,17 @@ function webViewerPreviousPage() {
 
 function webViewerZoomIn() {
   PDFViewerApplication.zoomIn();
+  window.onWebViewerScaleChanged && window.onWebViewerScaleChanged();
 }
 
 function webViewerZoomOut() {
   PDFViewerApplication.zoomOut();
+  window.onWebViewerScaleChanged && window.onWebViewerScaleChanged();
 }
 
 function webViewerZoomReset() {
   PDFViewerApplication.zoomReset();
+  window.onWebViewerScaleChanged && window.onWebViewerScaleChanged();
 }
 
 function webViewerPageNumberChanged(evt) {
@@ -3815,7 +3818,6 @@ function webViewerPageNumberChanged(evt) {
 
 function webViewerScaleChanged(evt) {
   PDFViewerApplication.pdfViewer.currentScaleValue = evt.value;
-  window.onWebViewerScaleChanged && window.onWebViewerScaleChanged(evt.value);
 }
 
 function webViewerRotateCw() {
