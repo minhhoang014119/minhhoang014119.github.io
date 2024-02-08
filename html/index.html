@@ -103,7 +103,6 @@ require.config({
 });
 require(["vs/editor/editor.main"], function () {
   const saved = window.load_save && window.load_save()
-  console.log('saved', saved)
 	window.html = monaco.editor.create($("#html"), {
 		model: monaco.editor.createModel(saved ? saved.htmlVal : localStorage.getItem("htmlVal"), "html"),
 		theme: "vs-dark",
