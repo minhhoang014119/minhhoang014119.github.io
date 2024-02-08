@@ -1,4 +1,5 @@
-<script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.23.0/min/vs/loader.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.23.0/min/vs/loader.min.js"></script>
 <style>
 .box-h, .box-v {
 	display: flex;
@@ -6,28 +7,33 @@
 	height: 100%;
 	flex-direction: row;
 }
+
 .box-v {
 	flex-direction: column;
 }
+
 .resize {
 	position: relative;
 }
+
 .fill {
 	flex: 1;
 }
-.box-h .button,
-.box-v .button {
+
+.box-h .button, .box-v .button {
 	overflow: auto;
 	resize: horizontal;
 	width: 500px;
 	height: 50%;
 	position: relative;
 }
+
 .box-v .button {
 	resize: vertical;
 	width: 50%;
 	height: 500px;
 }
+
 .view {
 	position: absolute;
 	top: 0;
@@ -35,12 +41,15 @@
 	width: 100%;
 	height: 100%;
 }
-.box-h > .resize > .view {
+
+.box-h>.resize>.view {
 	width: calc(100% - 15px);
 }
-.box-v > .resize > .view {
+
+.box-v>.resize>.view {
 	height: calc(100% - 15px);
 }
+
 .icon, #show {
 	background: green;
 	width: 15px;
@@ -49,6 +58,7 @@
 	right: 0;
 	bottom: 0;
 }
+
 #show {
 	background: blue;
 	bottom: 30px;
@@ -85,27 +95,26 @@ function showIframe(){
 	localStorage.setItem("htmlVal", htmlVal);
 	localStorage.setItem("jsVal", jsVal);
 	$("#iframe").src = "data:text/html;charset=utf-8," + escape(htmlVal + "<script>" + jsVal + "</" + "script>");
+	window.on_save && window.on_save({htmlVal, jsVal})
 }
 
 require.config({
 	baseUrl: "https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.23.0/min/"
 });
 require(["vs/editor/editor.main"], function () {
+  const saved = window.load_save && window.load_save()
+  console.log('saved', saved)
 	window.html = monaco.editor.create($("#html"), {
-		model: monaco.editor.createModel(localStorage.getItem("htmlVal"), "html"),
+		model: monaco.editor.createModel(saved ? saved.htmlVal : localStorage.getItem("htmlVal"), "html"),
 		theme: "vs-dark",
 		automaticLayout: true
 	});
-	html.addCommand(monaco.KeyMod.CtrlCmd | monaco.KeyCode.KEY_S, function() {
-		showIframe();
-	});
+	html.addCommand(monaco.KeyMod.CtrlCmd | monaco.KeyCode.KEY_S, showIframe);
 	window.js = monaco.editor.create($("#js"), {
-		model: monaco.editor.createModel(localStorage.getItem("jsVal"), "javascript"),
+		model: monaco.editor.createModel(saved ? saved.jsVal : localStorage.getItem("jsVal"), "javascript"),
 		theme: "vs-dark",
 		automaticLayout: true
 	});
-	js.addCommand(monaco.KeyMod.CtrlCmd | monaco.KeyCode.KEY_S, function() {
-		showIframe();
-	});
+	js.addCommand(monaco.KeyMod.CtrlCmd | monaco.KeyCode.KEY_S, showIframe);
 });
 </script>
