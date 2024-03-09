@@ -107,7 +107,7 @@ body {
     	text("index.js"),
     	localStorage.getItem("index.js") && fetch("index.js", { cache: "no-cache" }).then(rs => rs.text()).catch(er => console.error(er))
     ]);
-    if (indexTextNew && indexTextNew != indexText) {
+    if (indexTextNew && indexTextNew.replaceAll("// DEBUG ", "") != indexText.replaceAll("// DEBUG ", "")) {
     	Object.keys(localStorage).forEach(key => !key.startsWith("cache") && localStorage.removeItem(key))
     	alert('Has new update, need to refresh')
     	location.reload()
