@@ -110,7 +110,7 @@ body {
     if (indexTextNew && indexTextNew.replaceAll("// DEBUG ", "") != indexText.replaceAll("// DEBUG ", "")) {
     	Object.keys(localStorage).forEach(key => !key.startsWith("cache") && localStorage.removeItem(key))
     	alert('Has new update, need to refresh')
-    	location.reload()
+    	setTimeout(() => location.reload(), 2000)
     }
     eval(babelText);
     eval(requireText);
