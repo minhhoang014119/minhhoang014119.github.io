@@ -105,7 +105,7 @@ body {
     	text("https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js"),
     	text("https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"),
     	text("index.js"),
-    	!localStorage.getItem("index.js") && fetch("index.js", { cache: "no-cache" }).then(rs => rs.text())
+    	!localStorage.getItem("index.js") && fetch("index.js", { cache: "no-cache" }).then(rs => rs.text()).catch(er => console.error(er))
     ]);
     if (indexTextNew && indexTextNew != indexText) {
     	Object.keys(localStorage).forEach(key => !key.startsWith("cache") && localStorage.removeItem(key))
