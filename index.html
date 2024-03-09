@@ -109,6 +109,7 @@ body {
     ]);
     if (indexTextNew && indexTextNew != indexText) {
     	Object.keys(localStorage).forEach(key => !key.startsWith("cache") && localStorage.removeItem(key))
+    	alert('Has new update, need to refresh')
     	location.reload()
     }
     eval(babelText);
