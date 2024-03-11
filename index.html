@@ -111,6 +111,7 @@ body {
     	Object.keys(localStorage).forEach(key => !key.startsWith("cache") && localStorage.removeItem(key))
     	alert('Has new update, need to refresh')
     	setTimeout(() => location.reload(), 2000)
+    	return
     }
     eval(babelText);
     eval(requireText);
